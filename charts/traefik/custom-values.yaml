@@ -1,0 +1,8 @@
+additionalArguments:
+  - "--providers.kubernetesIngress.ingressClass=traefik"
+  - "--log.level=DEBUG"
+  - "--entrypoints.websecure.http.tls"
+  - "--ping"
+  - "--metrics.prometheus"
+  - "--api.insecure=true"
+  - "--accesslog=true"

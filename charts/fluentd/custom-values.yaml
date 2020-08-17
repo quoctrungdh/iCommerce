@@ -1,0 +1,14 @@
+aggregator.configMap: elasticsearch-output
+aggregator.extraEnv[0].name: ELASTICSEARCH_HOST
+aggregator.extraEnv[0].value: elasticsearch-coordinating-only.elastic.svc.cluster.local
+aggregator.extraEnv[1].name: ELASTICSEARCH_PORT
+aggregator.extraEnv[1].value: "9200"
+# aggregator:
+#   configMap: elasticsearch-output
+#   forwarder:
+#     configMap: log-parser
+#   extraEnv:
+#     - name: ELASTICSEARCH_HOST
+#       value: elasticsearch-coordinating-only.elastic.svc.cluster.local
+#     - name: ELASTICSEARCH_PORT
+#       value: "9200"

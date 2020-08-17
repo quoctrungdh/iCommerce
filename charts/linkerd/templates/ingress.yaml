@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: linkerd-web
+  namespace: {{ .Values.projectName }}
+spec:
+  type: ExternalName
+  externalName: linkerd-web.linkerd.svc.cluster.local
+  ports:
+  - name: linkerd-web-port
+    port: 8084
+    protocol: TCP
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: linker-dashboard-ingress
+  namespace: {{ .Values.projectName }}
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: "Host(`{{ .Values.appLinkerdDomain }}`)"
+      kind: Rule
+      services:
+        - name: linkerd-web
+          kind: Service
+          port: 8084

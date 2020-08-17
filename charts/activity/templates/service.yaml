@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ .Values.serviceName }}-svc"
+  labels:
+    app: {{ .Values.serviceName }}
+    project: {{ .Values.projectName }}
+spec:
+  selector:
+    app: {{ .Values.serviceName }}
+  ports:
+    - protocol: TCP
+      name: "{{ .Values.serviceName }}-port"
+      port: 80
+      targetPort: 8080

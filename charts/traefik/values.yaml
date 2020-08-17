@@ -1,0 +1,4 @@
+serviceName: traefik
+projectName: i-commerce
+replicaCount: 2
+restartPolicy: Always

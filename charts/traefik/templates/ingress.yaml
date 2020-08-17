@@ -1,0 +1,22 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: web-ingress
+  namespace: traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  entryPoints:
+    - web
+    - traefik
+  routes:
+    - match: "Host(`{{ .Values.appTraefikDomain }}`) && PathPrefix(`/api`)"
+      kind: Rule
+      services:
+        - name: api@internal
+          kind: TraefikService
+    - match: "Host(`{{ .Values.appTraefikDomain }}`)"
+      kind: Rule
+      services:
+        - name: dashboard@internal
+          kind: TraefikService
