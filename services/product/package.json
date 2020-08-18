@@ -14,13 +14,17 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "fluent-logger": "^3.4.1",
+    "fluent-logger-node": "^0.0.3",
     "http-status-codes": "^1.4.0",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
     "koa-json": "^2.0.2",
     "koa-logger": "^3.2.1",
     "koa-router": "^9.4.0",
-    "mongoose": "^5.10.0"
+    "mongoose": "^5.10.0",
+    "ts-nats": "^1.2.15",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@types/koa": "^2.11.3",

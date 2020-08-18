@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: global-env
+  namespace: i-commerce
+data:
+  MONGO_COLLECTION_PRODUCTS: products
+  MONGO_COLLECTION_ACTIVITIES: activities
+  PORT: "8080"
+  NATS_SERVER: nats://icommerce-nats-monitoring.nats.svc.cluster.local:8222
+  FLUENTD_HOST: fluentd-headless.fluentd.svc.cluster.local

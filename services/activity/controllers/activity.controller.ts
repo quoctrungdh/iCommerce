@@ -2,6 +2,10 @@ import Koa from 'koa'
 import HttpStatus from 'http-status-codes'
 import ActivityModel from '../models/activity.model'
 
+export const ping = async (ctx: Koa.Context) => {
+  ctx.status = HttpStatus.OK
+}
+
 export const getActivity = async (ctx: Koa.Context) => {
   const activityId = ctx.request.URL.searchParams.get("id");
   const activity = await ActivityModel.findOne({ _id: activityId })

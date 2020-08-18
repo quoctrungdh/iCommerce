@@ -12,7 +12,9 @@ export async function initDatabase() {
 
   mongoose.Promise = global.Promise;
 
-  await mongoose.connect(MONGO_SERVER, {
+  const mongoServer = `mongodb://${MONGO_SERVER.split(',').map(elm => `${elm}:27017`).join(',')}`
+
+  await mongoose.connect(mongoServer, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

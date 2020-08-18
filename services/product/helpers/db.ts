@@ -10,11 +10,11 @@ export async function initDatabase() {
     throw new Error("Mongo DB is not found")
   }
 
-  console.log({ MONGO_SERVER, MONGO_DB })
+  const mongoServer = `mongodb://${MONGO_SERVER.split(',').map(elm => `${elm}:27017`).join(',')}`
 
   mongoose.Promise = global.Promise;
 
-  await mongoose.connect(MONGO_SERVER, {
+  await mongoose.connect(mongoServer, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

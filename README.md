@@ -1,12 +1,7 @@
 # iCommerce
-An online shopping application to sell their products
-
-### High level Architecture Diagram
-
-!["Architecture Diagram"](./iCommerce-Services.png?inline=true)
-
-### Database Design
-
+An online shopping application which sell the products.
+User can search the products they want then add to a shopping cart and proceed to place an order.
+To manage and make the users satisfied, all the users' activities are related to the products such as finding, filtering, viewing detail information will be stored.
 
 ### Technologies
 - [x] Docker, Kubernetes
@@ -17,60 +12,39 @@ An online shopping application to sell their products
 - [x] Logging: Fluentd, Elastic Search, Kibana
 - [x] Backend: Nodejs
 
-This application use ["Cloud Native Computing Foundation"](https://landscape.cncf.io/) Applications
-===========================================================
+### High level Architecture Diagram
 
-### To start all services with Kubernetes
+!["Architecture Diagram"](./diagrams/iCommerce-Services.png?inline=true)
+
+### Database Design
+TDP
+
+### Logging Design
+!["Logging Design"](./diagrams/fluentd-logs.png)
+
+### APIs
+TDP
+
+### Build and Deploy
+
+**Prerequisites**
 1. [Install Docker](https://www.docker.com/get-started)
 2. [Install K3D - Minimal Kubernetes distribution ](https://k3d.io/#installation)
 3. [Install Helm v3](https://helm.sh/docs/intro/install/)
 4. [Install Linkerd v2](https://linkerd.io/2/getting-started/) ( from step 0 - step 3 )
 
-4. Please copy some visual hosts to `/etc/hosts`
+5. Please copy some visual hosts to `/etc/hosts`
 ```
 127.0.0.1   local.linkerd.i-commerce.example
 127.0.0.1   local.traefik.i-commerce.example
 127.0.0.1   local.api.i-commerce.example
 ```
 
-5. Create file `./global-values.yaml` contains:
-```
-appNamespace: i-commerce
-appLinkerdDomain: local.linkerd.i-commerce.example
-appTraefikDomain: local.traefik.i-commerce.example
-appApiDomain: local.api.i-commerce.example
-```
+**Run the application**
+- Dev mode: `./build/dev/scripts/start.sh`
+- Production mode: `./build/production/scripts/start.sh`
 
-6. Create file `./configs/secrets.yaml` contains:
-```
-apiVersion: v1
-kind: Secret
-metadata:
-  name: db-env
-  namespace: i-commerce
-type: Opaque
-stringData:
-  MONGO_SERVER: <your-mongo-server>
-  MONGO_DB: <your-mongo-db>
-```
-
-7. Create file `./configs/configMaps.yaml` contains:
-```
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: global-env
-  namespace: i-commerce
-data:
-  MONGO_COLLECTION_PRODUCTS: products
-  MONGO_COLLECTION_FILES: files
-  MONGO_COLLECTION_ACTIVITIES: activities
-  PORT: "8080"
-```
-
-8. Run: `./scripts/start.sh`
-
-### Access/API links in LOCAL:
+**Access/API links in LOCAL**:
 - Linkerd Dashboard: http://local.linkerd.i-commerce.example
 - Traefik Dashboard: http://local.traefik.i-commerce.example
 - API: http://local.api.i-commerce.example
@@ -90,3 +64,4 @@ kubectl port-forward --namespace elastic svc/elasticsearch-kibana 5601:5601 &
     curl http://127.0.0.1:9200/
 ```
 
+all customers' activities such as searching, filtering and viewing product's details need to be stored in the database.

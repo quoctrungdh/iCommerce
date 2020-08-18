@@ -5,11 +5,13 @@ import json from "koa-json";
 import { PORT } from './constants'
 import { initDatabase } from "./helpers/db";
 import errorHandler from "./middlewares/errorHandler";
-import { getActivities, getActivity, createActivity, updateActivity, deleteActivity } from "./controllers/activity.controller";
+import { getActivities, getActivity, createActivity, updateActivity, deleteActivity, ping } from "./controllers/activity.controller";
+import natsMiddleware from './middlewares/nats'
 
 const app = new Koa();
 const router = new Router();
 
+router.get("/ping", ping);
 router.get("/", getActivities);
 router.get("/:id", getActivity);
 router.post("/", createActivity);
@@ -20,6 +22,7 @@ router.delete("/", deleteActivity);
 app.use(errorHandler);
 app.use(json());
 app.use(logger());
+app.use(natsMiddleware)
 
 // Routes
 app.use(router.routes()).use(router.allowedMethods());
