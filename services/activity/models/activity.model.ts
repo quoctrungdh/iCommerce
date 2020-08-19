@@ -9,9 +9,8 @@ const ActivitySchema = new Schema({
     enum: ['SEARCH', 'FILTER', 'VIEW'],
     required: true
   },
-  content: {
-    type: String,
-    required: true
+  data: {
+    type: String
   },
   host: {
     type: String,

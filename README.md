@@ -10,6 +10,7 @@ To manage and make the users satisfied, all the users' activities are related to
 - [x] **Reverse proxy and load balancer**: Traefik
 - [x] **Monitoring & Observer**: Grafana, Prometheus
 - [x] **Logging**: Fluentd, Elastic Search, Kibana
+- [x] **Message System**: NATS
 - [x] **Database**: MongoDB
 - [x] **Backend**: NodeJS
 

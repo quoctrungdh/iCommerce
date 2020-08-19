@@ -13,6 +13,14 @@ const ProductSchema = new Schema({
     type: String,
     required: true,
   },
+  brand: {
+    type: String,
+    required: true,
+  },
+  color: {
+    type: String,
+    required: true,
+  },
   inventory: { type: Number, default: 0 },
   available: {
     type: Boolean,
@@ -23,17 +31,7 @@ const ProductSchema = new Schema({
   description: {
     type: String,
     required: true,
-  },
-  tags: [
-    {
-      type: String,
-    },
-  ],
-  url: {
-    type: String,
-    required: true,
-  },
+  }
 });
 
-console.log("MONGO_COLLECTION_PRODUCTS", MONGO_COLLECTION_PRODUCTS)
 export default mongoose.model(MONGO_COLLECTION_PRODUCTS, ProductSchema);

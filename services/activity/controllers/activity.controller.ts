@@ -9,7 +9,6 @@ export const ping = async (ctx: Koa.Context) => {
 export const getActivity = async (ctx: Koa.Context) => {
   const activityId = ctx.request.URL.searchParams.get("id");
   const activity = await ActivityModel.findOne({ _id: activityId })
-  .exec()
 
   if (!activity) {
     ctx.throw(HttpStatus.NOT_FOUND);
@@ -20,12 +19,14 @@ export const getActivity = async (ctx: Koa.Context) => {
 }
 
 export const getActivities = async (ctx: Koa.Context) => {
-  const { page = 1, limit = 10, name } = ctx.request.query;
-  const activities = await ActivityModel.find({ name })
+  const { page: _page , limit: _limit, ...query } = ctx.request.query;
+  const page = parseInt(_page) || 0;
+  const limit = parseInt(_limit) || 3;
+
+  const activities = await ActivityModel.find(query)
   .sort({ createdAt: -1 })
   .skip(page * limit)
   .limit(limit)
-  .exec()
 
   if (!activities.length) {
     ctx.throw(HttpStatus.NOT_FOUND);
@@ -43,14 +44,14 @@ export const getActivities = async (ctx: Koa.Context) => {
 }
 
 export const createActivity = async (ctx: Koa.Context) => {
-  const data = ctx.body;
+  const data = ctx.request.body;
   await ActivityModel.create(data);
   ctx.status = 200
 }
 
 export const updateActivity = async (ctx: Koa.Context) => {
   const activityId = ctx.request.URL.searchParams.get("id");
-  const data = ctx.body;
+  const data = ctx.request.body;
   await ActivityModel.findByIdAndUpdate(activityId, data).exec();
   ctx.status = 200
 }

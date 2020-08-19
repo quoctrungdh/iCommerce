@@ -1,8 +1,6 @@
 #!/bin/bash
 
-services=("product"
-#  "activity"
- )
+services=("activity")
 envName="dev"
 app_name="i-commerce"
 

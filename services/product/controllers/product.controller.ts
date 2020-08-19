@@ -1,5 +1,6 @@
 import Koa from "koa";
 import HttpStatus from "http-status-codes";
+import logger from '../helpers/logger'
 import ProductModel from "../models/product.model";
 
 export const ping = async (ctx: Koa.Context) => {
@@ -32,14 +33,16 @@ export const getProduct = async (ctx: Koa.Context) => {
 };
 
 export const getProducts = async (ctx: Koa.Context) => {
-  const { page = 1, limit = 10, ...query } = ctx.request.query;
+  const { page: _page , limit: _limit, ...query } = ctx.request.query;
   const { natsClient } = ctx.state;
 
-  console.log("12345", ctx.request.querystring)
-  console.log("ctx.request.query.page", JSON.stringify(ctx.request.query))
+  const page = parseInt(_page) || 0;
+  const limit = parseInt(_limit) || 3;
+
+  logger.info(JSON.stringify(ctx.request.query))
 
   if (query) {
-    natsClient.publish("activity.create", {
+    natsClient.publish("product.activity", {
       type: "SEARCH",
       host: ctx.headers.host,
       userAgent: ctx.headers["user-agent"],
@@ -50,8 +53,8 @@ export const getProducts = async (ctx: Koa.Context) => {
 
   const products = await ProductModel.find(query)
     .sort({ updatedAt: -1 })
-    .skip(Number(page) * Number(limit))
-    .limit(Number(limit));
+    .skip(page * limit)
+    .limit(limit);
 
   if (!products.length) {
     ctx.throw(HttpStatus.NOT_FOUND);
@@ -69,14 +72,15 @@ export const getProducts = async (ctx: Koa.Context) => {
 };
 
 export const createProduct = async (ctx: Koa.Context) => {
-  const data = ctx.body;
+  const data = ctx.request.body;
+  logger.info("createProduct", JSON.stringify(data))
   await ProductModel.create(data)
   ctx.status = 200;
 };
 
 export const updateProduct = async (ctx: Koa.Context) => {
   const productId = ctx.request.URL.searchParams.get("id");
-  const data = ctx.body;
+  const data = ctx.request.body;
   await ProductModel.findByIdAndUpdate(productId, data).exec();
   ctx.status = 200;
 };

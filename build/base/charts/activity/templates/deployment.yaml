@@ -54,6 +54,11 @@ spec:
                 configMapKeyRef:
                   name: global-env
                   key: NATS_SERVER
+            - name: FLUENTD_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: global-env
+                  key: FLUENTD_HOST
           readinessProbe:
             httpGet:
               path: /ping

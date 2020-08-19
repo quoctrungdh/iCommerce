@@ -1,24 +1,38 @@
-import { connect, NatsConnectionOptions, Payload } from "ts-nats";
+import { connect, Payload } from "ts-nats";
 import Koa from "koa";
-import HttpStatus from "http-status-codes";
 import { NATS_SERVER } from "../constants";
+import activityModel from "../models/activity.model";
+import logger from "../helpers/logger";
 
 export default async (ctx: Koa.Context, next: Koa.Next) => {
-  if (!NATS_SERVER) {
-    ctx.throw(HttpStatus.SERVICE_UNAVAILABLE);
-  } else {
-    const servers = NATS_SERVER.split(",");
+  const servers = NATS_SERVER.split(",");
+
+  if(!ctx.state.natsClient) {
     let nc = await connect({ servers, payload: Payload.JSON });
     ctx.state.natsClient = nc;
 
-    await nc.subscribe("activity.create", (err, msg) => {
+    nc.subscribe("product.activity", async (err, msg) => {
       if (err) {
-        ctx.throw(HttpStatus.BAD_REQUEST, err)
+        logger.error(err);
       } else {
-        console.log("message received on", msg.subject, ":", JSON.stringify(msg.data));
+        try {
+          logger.info(
+            "product.activity: message received on",
+            msg.subject,
+            JSON.stringify(msg.data)
+          );
+          await activityModel.create({
+            type: msg.data.type, 
+            host: msg.data.host, 
+            userAgent: msg.data.userAgent, 
+            ip: msg.data.ip,
+            data: JSON.stringify(msg.data.data)
+          });
+        } catch (error) {
+          logger.debug(error);
+        }
       }
     });
-
-    await next();
   }
+  await next();
 };

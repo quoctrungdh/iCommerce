@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import { MONGO_SERVER, MONGO_DB } from '../constants';
+import logger from '../helpers/logger'
 
 export async function initDatabase() {
   if(!MONGO_SERVER) {
@@ -12,18 +13,23 @@ export async function initDatabase() {
 
   mongoose.Promise = global.Promise;
 
-  const mongoServer = `mongodb://${MONGO_SERVER.split(',').map(elm => `${elm}:27017`).join(',')}`
+  logger.info(JSON.stringify({ MONGO_SERVER, MONGO_DB, full: `${MONGO_SERVER}/${MONGO_DB}` }))
+  const readyStatus = ['disconnected', 'connected', 'connecting', 'disconnecting']
 
-  await mongoose.connect(mongoServer, {
+  const dbClient = await mongoose.connect(`${MONGO_SERVER}/${MONGO_DB}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
-    dbName: MONGO_DB
+    useCreateIndex: true
   })
 
   // Get the default connection
-  const db = mongoose.connection;
+  const db = dbClient.connection;
+  logger.info("readyState", readyStatus[db.readyState])
   
+  
+  db.once('open', function(res){
+    logger.info('db connection open', JSON.stringify(res));
+  });
 
   // Bind connection to error event (to get notification of connection errors)
   db.on('error', console.error.bind(console, 'MongoDB connection error:'));
