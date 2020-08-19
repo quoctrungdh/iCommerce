@@ -1,2 +1,7 @@
 master:
   replicas: 2
+
+# Helm values
+serviceRoute: "Host(`traefik.i-commerce.example`)"
+serviceRouteAPI: "Host(`traefik.i-commerce.example`) && PathPrefix(`/api`)"
+serviceName: traefik

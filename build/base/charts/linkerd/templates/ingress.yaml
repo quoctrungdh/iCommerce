@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: linkerd-web
+  name: linkerd-web-ext
   namespace: {{ .Values.projectName }}
 spec:
   type: ExternalName
@@ -14,15 +14,16 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: linker-dashboard-ingress
-  namespace: {{ .Values.projectName }}
+  name: {{ .Values.serviceName }}
+  namespace: linkerd
   annotations:
     kubernetes.io/ingress.class: traefik
+    ingress.kubernetes.io/custom-request-headers: l5d-dst-override:linkerd-web.linkerd.svc.cluster.local:8084
 spec:
   entryPoints:
     - web
   routes:
-    - match: "Host(`{{ .Values.appLinkerdDomain }}`)"
+    - match: {{ .Values.serviceRoute }}
       kind: Rule
       services:
         - name: linkerd-web

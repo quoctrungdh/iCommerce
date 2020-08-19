@@ -20,7 +20,7 @@ router.delete("/", deleteProduct);
 
 // Middlewares
 app.use(errorHandler);
-app.use(json());
+// app.use(json());
 if(IS_DEV) {
   app.use(koaLogger());
 }

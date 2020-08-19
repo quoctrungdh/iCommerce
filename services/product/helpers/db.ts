@@ -10,20 +10,29 @@ export async function initDatabase() {
     throw new Error("Mongo DB is not found")
   }
 
-  const mongoServer = `mongodb://${MONGO_SERVER.split(',').map(elm => `${elm}:27017`).join(',')}`
-
   mongoose.Promise = global.Promise;
 
-  await mongoose.connect(mongoServer, {
+  console.log(JSON.stringify({ MONGO_SERVER, MONGO_DB, full: `${MONGO_SERVER}/${MONGO_DB}` }))
+
+  const dbClient = await mongoose.connect(`${MONGO_SERVER}/${MONGO_DB}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
-    dbName: MONGO_DB
+    useCreateIndex: true
   })
 
   // Get the default connection
-  const db = mongoose.connection;
+  const db = dbClient.connection;
+  console.log("readyState", db.readyState)
+  /*
+    0: disconnected
+    1: connected
+    2: connecting
+    3: disconnecting
+  */
   
+  db.once('open', function(res){
+    console.log('db connection open', JSON.stringify(res));
+  });
 
   // Bind connection to error event (to get notification of connection errors)
   db.on('error', console.error.bind(console, 'MongoDB connection error:'));

@@ -1,0 +1,2 @@
+serviceRoute: "Host(`kibana.i-commerce.example`)"
+serviceName: elasticsearch-kibana

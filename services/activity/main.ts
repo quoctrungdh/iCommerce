@@ -1,8 +1,8 @@
 import Koa from "koa";
 import Router from "koa-router";
-import logger from "koa-logger";
+import koaLogger from "koa-logger";
 import json from "koa-json";
-import { PORT } from './constants'
+import { PORT, IS_DEV } from './constants'
 import { initDatabase } from "./helpers/db";
 import errorHandler from "./middlewares/errorHandler";
 import { getActivities, getActivity, createActivity, updateActivity, deleteActivity, ping } from "./controllers/activity.controller";
@@ -21,7 +21,9 @@ router.delete("/", deleteActivity);
 // Middlewares
 app.use(errorHandler);
 app.use(json());
-app.use(logger());
+if(IS_DEV) {
+  app.use(koaLogger());
+}
 app.use(natsMiddleware)
 
 // Routes

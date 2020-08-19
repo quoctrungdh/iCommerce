@@ -10,12 +10,12 @@ spec:
     - web
     - traefik
   routes:
-    - match: "Host(`{{ .Values.appTraefikDomain }}`) && PathPrefix(`/api`)"
+    - match: {{ .Values.serviceRouteAPI }}
       kind: Rule
       services:
         - name: api@internal
           kind: TraefikService
-    - match: "Host(`{{ .Values.appTraefikDomain }}`)"
+    - match: {{ .Values.serviceRoute }}
       kind: Rule
       services:
         - name: dashboard@internal

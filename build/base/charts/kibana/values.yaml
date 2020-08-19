@@ -1,0 +1,4 @@
+serviceName: kibana
+projectName: elastic
+replicaCount: 1
+restartPolicy: Always

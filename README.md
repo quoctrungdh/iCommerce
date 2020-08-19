@@ -4,20 +4,32 @@ User can search the products they want then add to a shopping cart and proceed t
 To manage and make the users satisfied, all the users' activities are related to the products such as finding, filtering, viewing detail information will be stored.
 
 ### Technologies
-- [x] Docker, Kubernetes
-- [x] Helm: The package manager for Kubernetes
-- [x] Linkerd: An ultralight service mesh for Kubernetes
-- [x] Traefik: Modern HTTP reverse proxy and load balancer
-- [x] Monitoring & Observer: Grafana, Prometheus
-- [x] Logging: Fluentd, Elastic Search, Kibana
-- [x] Backend: Nodejs
+- [x] **Container Orchestration Engine**: Kubernetes - Docker
+- [x] **The package manager for Kubernetes**: Helm
+- [x] **Service mesh for Kubernetes**: Linkerd
+- [x] **Reverse proxy and load balancer**: Traefik
+- [x] **Monitoring & Observer**: Grafana, Prometheus
+- [x] **Logging**: Fluentd, Elastic Search, Kibana
+- [x] **Database**: MongoDB
+- [x] **Backend**: NodeJS
+
+### Features
+- [x] Auto Horizontal Scaling
+- [x] Auto Load Balancing
+- [x] Router Rules
+- [x] Service Mesh
+- [x] Service Discovery
+- [x] Message Queue
+- [x] Monitoring & Observer
+- [x] Virtualizing Centralized Logging
+- [ ] High Availability
 
 ### High level Architecture Diagram
 
 !["Architecture Diagram"](./diagrams/iCommerce-Services.png?inline=true)
 
 ### Database Design
-TDP
+!["Database Design"](./diagrams/mongodb-multitier.png)
 
 ### Logging Design
 !["Logging Design"](./diagrams/fluentd-logs.png)
@@ -33,21 +45,22 @@ TDP
 3. [Install Helm v3](https://helm.sh/docs/intro/install/)
 4. [Install Linkerd v2](https://linkerd.io/2/getting-started/) ( from step 0 - step 3 )
 
-5. Please copy some visual hosts to `/etc/hosts`
-```
-127.0.0.1   local.linkerd.i-commerce.example
-127.0.0.1   local.traefik.i-commerce.example
-127.0.0.1   local.api.i-commerce.example
-```
-
 **Run the application**
 - Dev mode: `./build/dev/scripts/start.sh`
 - Production mode: `./build/production/scripts/start.sh`
 
-**Access/API links in LOCAL**:
-- Linkerd Dashboard: http://local.linkerd.i-commerce.example
-- Traefik Dashboard: http://local.traefik.i-commerce.example
-- API: http://local.api.i-commerce.example
+**For Dev Mode**
+Please copy some visual hosts to `/etc/hosts`
+```
+127.0.0.1   api.i-commerce.example
+127.0.0.1   kibana.i-commerce.example
+127.0.0.1   traefik.i-commerce.example
+```
+**Access/API links for DEV Mode**:
+- Traefik Dashboard: http://traefik.i-commerce.example
+- Kibana: http://kibana.i-commerce.example
+- Product API: http://api.i-commerce.example/product
+- Activity API: http://api.i-commerce.example/activity
 ==========================================
 
 **👉 IMPORTANT: You can use [POSTMAN](https://www.postman.com/downloads/) to call your API**

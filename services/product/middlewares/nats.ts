@@ -9,7 +9,6 @@ export default async (ctx: Koa.Context, next: Koa.Next) => {
   } else {
     const servers = NATS_SERVER.split(',')
     let nc = await connect({ servers, payload: Payload.JSON });
-
     ctx.state.natsClient = nc
 
     await next()

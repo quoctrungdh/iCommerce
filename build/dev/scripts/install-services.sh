@@ -1,6 +1,9 @@
 #!/bin/bash
 
-services=("product" "activity")
+services=("product"
+#  "activity"
+ )
+envName="dev"
 app_name="i-commerce"
 
 root_folder=$(cd $(dirname $0); cd ..; pwd)
@@ -15,7 +18,7 @@ do
   _out 👉 Building ${i}
   ./build/dev/scripts/docker-build.sh -f ./services/${i} -n ${i}
   _out 👉 Deploying ${i}
-  helm upgrade --install -n ${app_name} $i ./build/base/charts/${i} -f ./build/dev/charts/${i}/custom-values.yaml
+  helm upgrade --install -n ${app_name} $i ./build/base/charts/${i} -f ./build/${envName}/charts/${i}/custom-values.yaml
 done
 
 

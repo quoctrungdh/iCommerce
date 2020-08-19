@@ -1,6 +1,2 @@
 auth:
   enabled: false
-initdbScripts: 
-  init: ./initScript/init.js
-architecture: replicaset
-replicaCount: 2

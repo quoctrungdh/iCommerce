@@ -35,4 +35,5 @@ const ProductSchema = new Schema({
   },
 });
 
+console.log("MONGO_COLLECTION_PRODUCTS", MONGO_COLLECTION_PRODUCTS)
 export default mongoose.model(MONGO_COLLECTION_PRODUCTS, ProductSchema);

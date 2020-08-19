@@ -1,0 +1,2 @@
+serviceRoute: "Host(`api.i-commerce.example`) && PathPrefix(`/product`)"
+serviceName: product
