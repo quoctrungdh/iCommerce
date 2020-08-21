@@ -10,3 +10,10 @@ k3d cluster create i-commerce \
 -p 443:443@loadbalancer
 
 docker network connect k3d-i-commerce registry.localhost
+
+
+# minikube delete && \
+# minikube start --insecure-registry --cpus 4 --memory 8192 && \
+# minikube addons enable registry && \
+# docker run --rm -it --network=host alpine ash -c "apk add socat && socat TCP-LISTEN:5000,reuseaddr,fork TCP:$(minikube ip):5000" && \
+# kukebctl cluster-info

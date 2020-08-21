@@ -1,2 +1,3 @@
 serviceRoute: "Host(`api.i-commerce.example`) && PathPrefix(`/product`)"
 serviceName: product
+image: registry.localhost:5000/product:latest

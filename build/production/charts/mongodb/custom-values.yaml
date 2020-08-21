@@ -1,2 +1,16 @@
-master:
-  replicas: 2
+architecture: replicaset
+# useStatefulSet: true
+# ingress:
+#   enabled: true
+# metrics:
+#   enabled: true
+# replicaSet:
+#   enabled: true
+#   replicas:
+#     secondary: 1
+initdbScripts:
+  my_init_script.js: |
+    print("Start create DB");
+    db = db.getSiblingDB("icommerce-db");
+    db.products.insert({"name" : "test", "price" : "1" });
+    print("Start end DB");

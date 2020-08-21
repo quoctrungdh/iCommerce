@@ -1,7 +1,6 @@
 serviceName: product
 projectName: i-commerce
 imagePullPolicy: Always
-image: registry.localhost:5000/product:latest
 restartPolicy: Always
 replicaCount: 1
 serviceRoute: Host(`local.api.i-commerce.example`) && PathPrefix(`/product`)

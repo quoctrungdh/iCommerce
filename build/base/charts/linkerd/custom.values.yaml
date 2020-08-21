@@ -1,0 +1,3 @@
+global:
+  proxyInit:
+    ignoreOutboundPorts: 4222,8222

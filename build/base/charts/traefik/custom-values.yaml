@@ -1,5 +1,7 @@
 additionalArguments:
   - "--log.level=DEBUG"
+  - "--entryPoints.web.forwardedHeaders.insecure"
+  - "--entryPoints.websecure.forwardedHeaders.insecure"
   # - "--entrypoints.websecure.http.tls"
   # - "--providers.kubernetesIngress.ingressClass=traefik-cert-manager"
   - "--ping"

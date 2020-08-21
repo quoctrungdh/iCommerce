@@ -26,10 +26,10 @@ function loggerHandler() {
     fluent = new fluentTransport('product.service', config);
     
   } catch(error) {
-    console.error(error)
+    console.log(error.message)
   }
 
-  const logger = winston.createLogger({
+  const wlogger = winston.createLogger({
     format: combine(
       errors({ stack: true }), // <-- use errors format
       timestamp(),
@@ -38,12 +38,22 @@ function loggerHandler() {
     transports: [fluent, new (winston.transports.Console)()]
   });
   
-  logger.on('finish', () => {
-    console.log("finish")
+  wlogger.on('finish', () => {
     fluent.sender.end("end", {}, () => {})
   });
 
-  return logger
+  const loggerCombineMsg = (fns: Function) => {
+    return (...messages: any) => {
+      const combinedMsg = messages.map((elm: any) => typeof elm === 'object' && JSON.stringify(elm) || elm).join('|')
+      fns(combinedMsg)
+    }
+  }
+
+  return {
+    info: loggerCombineMsg(wlogger.info),
+    error: loggerCombineMsg(wlogger.error),
+    debug: loggerCombineMsg(wlogger.debug)
+  }
 }
 
 export default loggerHandler()

@@ -1,7 +1,9 @@
 global:
   kibanaEnabled: true
 metrics:
-  enabled: true
+  enabled: false
 extraEnvVars:
   - name: ELASTICSEARCH_VERSION
     value: 7.8.1
+# sysctlImage:
+#   enabled: false

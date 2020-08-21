@@ -7,12 +7,14 @@ import { PORT, IS_DEV } from './constants'
 import { initDatabase } from "./helpers/db";
 import { getProduct, getProducts, createProduct, updateProduct, deleteProduct, ping } from "./controllers/product.controller";
 import errorHandler from "./middlewares/errorHandler";
-import natsMiddleware from './middlewares/nats'
 import logger from './helpers/logger'
-
+import { serializeError } from 'serialize-error';
+import NatsHandler from "./events/natsHandler";
 
 const app = new Koa();
 const router = new Router();
+const nc = new NatsHandler()
+
 router.get("/ping", ping);
 router.get("/", getProducts);
 router.get("/:id", getProduct);
@@ -27,17 +29,17 @@ app.use(bodyParser());
 if(IS_DEV) {
   app.use(koaLogger());
 }
-app.use(natsMiddleware)
+app.use(nc.natsMiddleware)
 
 // Routes
 app.use(router.routes()).use(router.allowedMethods());
 
 /* centralized error handling: */
 app.on('error', (err, ctx) => {
-  logger.error(err)
+  logger.error(JSON.stringify(serializeError(err)))
 });
 
 app.listen(PORT, () => {
-  initDatabase()
+  initDatabase();
   console.log("Koa started", PORT);
 });

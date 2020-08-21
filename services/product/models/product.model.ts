@@ -26,12 +26,7 @@ const ProductSchema = new Schema({
     type: Boolean,
     required: true,
     default: true,
-  },
-  images: [{ type: String, required: true }],
-  description: {
-    type: String,
-    required: true,
   }
-});
+}, { versionKey: false });
 
 export default mongoose.model(MONGO_COLLECTION_PRODUCTS, ProductSchema);

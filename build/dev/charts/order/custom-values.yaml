@@ -1,0 +1,3 @@
+serviceRoute: "Host(`api.i-commerce.example`) && PathPrefix(`/order`)"
+serviceName: order
+image: registry.localhost:5000/order:latest

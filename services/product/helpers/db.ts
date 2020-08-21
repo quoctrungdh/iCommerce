@@ -22,7 +22,7 @@ export async function initDatabase() {
 
   // Get the default connection
   const db = dbClient.connection;
-  logger.info("readyState", readyStatus[db.readyState])
+  logger.info("DB readyState", readyStatus[db.readyState])
   
   
   db.once('open', function(res){

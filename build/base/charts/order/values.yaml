@@ -1,0 +1,7 @@
+serviceName: order
+projectName: i-commerce
+imagePullPolicy: Always
+restartPolicy: Always
+replicaCount: 1
+serviceRoute: Host(`local.api.i-commerce.example`) && PathPrefix(`/order`)
+domain: local.api.i-commerce.example

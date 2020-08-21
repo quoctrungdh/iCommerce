@@ -24,6 +24,6 @@ const ActivitySchema = new Schema({
     type: String,
     required: true
   }
-});
+}, { versionKey: false });
 
 export default mongoose.model(MONGO_COLLECTION_ACTIVITIES, ActivitySchema);

@@ -1,0 +1,73 @@
+.
+├── build
+│   ├── base
+│   │   ├── charts
+│   │   │   ├── activity
+│   │   │   │   └── templates
+│   │   │   ├── elasticsearch
+│   │   │   ├── fluentd
+│   │   │   ├── kibana
+│   │   │   │   ├── charts
+│   │   │   │   └── templates
+│   │   │   ├── linkerd
+│   │   │   │   └── templates
+│   │   │   ├── mongodb
+│   │   │   ├── nats
+│   │   │   ├── order
+│   │   │   │   ├── charts
+│   │   │   │   └── templates
+│   │   │   ├── product
+│   │   │   │   ├── charts
+│   │   │   │   └── templates
+│   │   │   └── traefik
+│   │   │       ├── charts
+│   │   │       └── templates
+│   │   └── scripts
+│   ├── dev
+│   │   ├── charts
+│   │   │   ├── activity
+│   │   │   ├── elasticsearch
+│   │   │   ├── fluentd
+│   │   │   ├── kibana
+│   │   │   ├── linkerd
+│   │   │   ├── mongodb
+│   │   │   ├── nats
+│   │   │   ├── order
+│   │   │   ├── product
+│   │   │   └── traefik
+│   │   ├── configs
+│   │   └── scripts
+│   └── production
+│       ├── charts
+│       │   ├── activity
+│       │   ├── elasticsearch
+│       │   ├── fluentd
+│       │   ├── mongodb
+│       │   ├── nats
+│       │   ├── order
+│       │   ├── product
+│       │   └── traefik
+│       ├── configs
+│       └── scripts
+├── diagrams
+└── services
+    ├── activity
+    │   ├── build
+    │   ├── controllers
+    │   ├── helpers
+    │   ├── middlewares
+    │   └── models
+    ├── order
+    │   ├── build
+    │   ├── controllers
+    │   ├── helpers
+    │   ├── middlewares
+    │   └── models
+    └── product
+        ├── build
+        ├── controllers
+        ├── helpers
+        ├── middlewares
+        └── models
+
+70 directories
