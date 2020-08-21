@@ -10,14 +10,17 @@ export enum ACTIVITY_TYPES {
 
 function publisherActivityCreate(type: ACTIVITY_TYPES, data: any, ctx: Koa.Context) {
   return (nc: any) => {
-    logger.info("PUSHING...", ACTIVITY_SERVICE_CREATE,type, data )
+    logger.info("PUSHING...", ACTIVITY_SERVICE_CREATE,type, data)
     if(nc) {
       nc.publish(ACTIVITY_SERVICE_CREATE, {
         type,
-        host: ctx.headers.host,
+        data,
         userAgent: ctx.headers["user-agent"],
-        ip: ctx.ips.length > 0 ? ctx.ips[ctx.ips.length - 1] : ctx.ip,
-        data
+        host: ctx.headers['x-forwarded-host'],
+        ip: ctx.headers['x-forwarded-for'],
+        port: ctx.headers['x-forwarded-port'],
+        prefix: ctx.headers['x-forwarded-prefix'],
+        protocol: ctx.headers['x-forwarded-proto'],
       });
     }
   }

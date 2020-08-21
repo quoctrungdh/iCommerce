@@ -13,17 +13,23 @@ const ActivitySchema = new Schema({
     type: String
   },
   host: {
-    type: String,
-    required: true
+    type: String
   },
   userAgent: {
-    type: String,
-    required: true
+    type: String
   },
   ip: {
-    type: String,
-    required: true
-  }
+    type: String
+  },
+  port: {
+    type: String
+  },
+  prefix: {
+    type: String
+  },
+  protocol: {
+    type: String
+  },
 }, { versionKey: false });
 
 export default mongoose.model(MONGO_COLLECTION_ACTIVITIES, ActivitySchema);
