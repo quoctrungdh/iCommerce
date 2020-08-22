@@ -8,5 +8,5 @@ data:
   MONGO_COLLECTION_ACTIVITIES: activities
   MONGO_COLLECTION_ORDERS: orders
   PORT: "8080"
-  NATS_SERVER: nats://icommerce-nats.nats.svc.cluster.local:4222
+  NATS_SERVER: nats://icommerce-nats-client.nats.svc.cluster.local:4222
   FLUENTD_HOST: fluentd-headless.fluentd.svc.cluster.local

@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`API test DELETE /:id 1`] = `
+Object {
+  "_id": "5f40da5f1fc695c40887b8c1",
+  "createdAt": 2020-08-22T09:23:57.318Z,
+}
+`;
+
+exports[`API test GET / 1`] = `
+"{
+  \\"data\\": [
+    {
+      \\"createdAt\\": \\"2020-08-22T09:23:57.318Z\\",
+      \\"_id\\": \\"507f191e810c19729de860ea\\",
+      \\"type\\": \\"SEARCH\\",
+      \\"data\\": \\"{\\\\\\"limit\\\\\\":\\\\\\"10\\\\\\",\\\\\\"page\\\\\\":\\\\\\"0\\\\\\",\\\\\\"brand\\\\\\":\\\\\\"OOOP\\\\\\",\\\\\\"color\\\\\\":\\\\\\"red\\\\\\"}\\",
+      \\"host\\": \\"api.i-commerce.example\\",
+      \\"userAgent\\": \\"PostmanRuntime/7.26.3\\",
+      \\"ip\\": \\"10.42.0.69\\",
+      \\"port\\": \\"1234\\",
+      \\"prefix\\": \\"/oka\\",
+      \\"protocol\\": \\"http\\"
+    },
+    {
+      \\"createdAt\\": \\"2020-08-22T09:23:57.318Z\\",
+      \\"_id\\": \\"5f40f1a39be715243a0217b9\\",
+      \\"type\\": \\"VIEW\\",
+      \\"data\\": \\"{\\\\\\"limit\\\\\\":\\\\\\"10\\\\\\",\\\\\\"page\\\\\\":\\\\\\"0\\\\\\",\\\\\\"brand\\\\\\":\\\\\\"OOOP\\\\\\",\\\\\\"color\\\\\\":\\\\\\"red\\\\\\"}\\",
+      \\"host\\": \\"api.i-commerce.example\\",
+      \\"userAgent\\": \\"PostmanRuntime/7.26.3\\",
+      \\"ip\\": \\"10.42.0.69\\",
+      \\"port\\": \\"1234\\",
+      \\"prefix\\": \\"/search\\",
+      \\"protocol\\": \\"http\\"
+    },
+    {
+      \\"createdAt\\": \\"2020-08-22T09:23:57.318Z\\",
+      \\"_id\\": \\"5f40f1b0f940e4246e0cd0d0\\",
+      \\"type\\": \\"FILTER\\",
+      \\"data\\": \\"{\\\\\\"limit\\\\\\":\\\\\\"10\\\\\\",\\\\\\"page\\\\\\":\\\\\\"0\\\\\\",\\\\\\"brand\\\\\\":\\\\\\"OOOP\\\\\\",\\\\\\"color\\\\\\":\\\\\\"red\\\\\\"}\\",
+      \\"host\\": \\"api.i-commerce.example\\",
+      \\"userAgent\\": \\"PostmanRuntime/7.26.3\\",
+      \\"ip\\": \\"10.42.0.69\\",
+      \\"port\\": \\"1234\\",
+      \\"prefix\\": \\"/filter\\",
+      \\"protocol\\": \\"http\\"
+    }
+  ],
+  \\"meta\\": {
+    \\"page\\": 0,
+    \\"pageSize\\": 3
+  }
+}"
+`;
+
+exports[`API test PUT /:id 1`] = `
+Object {
+  "_id": "5f40f42cf4450c2d61d4aa18",
+  "createdAt": 2020-08-22T09:23:57.318Z,
+  "data": "{\\"limit\\":\\"10\\",\\"page\\":\\"0\\",\\"brand\\":\\"OOOP\\",\\"color\\":\\"red\\"}",
+  "host": "api.i-commerce.example",
+  "ip": "10.42.0.69",
+  "port": "1234",
+  "prefix": "/search",
+  "protocol": "http",
+  "type": "VIEW",
+  "userAgent": "PostmanRuntime/7.26.3",
+}
+`;

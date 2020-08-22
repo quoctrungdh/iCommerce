@@ -54,8 +54,9 @@ kubectl rollout status deploy/linkerd-web -n linkerd
 
 _out 👉 Installing NATS
 kubectl create namespace nats
-helm repo add nats https://nats-io.github.io/k8s/helm/charts/
-helm install icommerce-nats nats/nats -f ./build/base/charts/nats/custom-values.yaml -f ./build/${ENV}/charts/nats/custom-values.yaml -n nats
+# helm repo add nats https://nats-io.github.io/k8s/helm/charts/
+helm install icommerce-nats bitnami/nats-f ./build/base/charts/nats/custom-values.yaml -f ./build/${ENV}/charts/nats/custom-values.yaml -n nats
+# helm install icommerce-nats nats/nats -f ./build/base/charts/nats/custom-values.yaml -f ./build/${ENV}/charts/nats/custom-values.yaml -n nats
 kubectl rollout status svc/icommerce-nats -n nats
 
 _out 👉 Installing MongoDB

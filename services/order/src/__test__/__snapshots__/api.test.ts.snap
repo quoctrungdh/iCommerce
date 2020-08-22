@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`API test DELETE /:id 1`] = `
+Object {
+  "_id": "5f40da5f1fc695c40887b8c1",
+  "createdAt": 2020-08-22T09:23:57.318Z,
+  "quantity": 1,
+  "status": "PENDING",
+  "updatedAt": 2020-08-22T09:23:57.318Z,
+}
+`;
+
+exports[`API test GET / 1`] = `
+"{
+  \\"data\\": [
+    {
+      \\"createdAt\\": \\"2020-08-22T08:47:38.094Z\\",
+      \\"updatedAt\\": \\"2020-08-22T08:47:03.693Z\\",
+      \\"status\\": \\"PENDING\\",
+      \\"quantity\\": 12,
+      \\"_id\\": \\"507f191e810c19729de860ea\\",
+      \\"totalPrice\\": 1234567,
+      \\"productID\\": \\"5f40da4cca1e00c3cd23f1a0\\"
+    },
+    {
+      \\"createdAt\\": \\"2020-08-22T08:47:38.094Z\\",
+      \\"updatedAt\\": \\"2020-08-22T08:47:03.693Z\\",
+      \\"status\\": \\"SHIPPED\\",
+      \\"quantity\\": 12,
+      \\"_id\\": \\"5f40f5b63377e3352038cc1b\\",
+      \\"totalPrice\\": 98765,
+      \\"productID\\": \\"5f40da4cca1e00c3cd23f1a0\\"
+    },
+    {
+      \\"createdAt\\": \\"2020-08-22T08:47:38.094Z\\",
+      \\"updatedAt\\": \\"2020-08-22T08:47:03.693Z\\",
+      \\"status\\": \\"COMPLETED\\",
+      \\"quantity\\": 12,
+      \\"_id\\": \\"507f191e810c19729de860ec\\",
+      \\"totalPrice\\": 34567,
+      \\"productID\\": \\"5f40da4cca1e00c3cd23f1a0\\"
+    }
+  ],
+  \\"meta\\": {
+    \\"page\\": 0,
+    \\"pageSize\\": 3
+  }
+}"
+`;
+
+exports[`API test PUT /:id 1`] = `
+Object {
+  "_id": "5f40da5f1fc695c40887b8c1",
+  "createdAt": 2020-08-22T08:47:38.094Z,
+  "quantity": 1,
+  "status": "PENDING",
+  "updatedAt": 2020-08-22T08:47:03.693Z,
+}
+`;

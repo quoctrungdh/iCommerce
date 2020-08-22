@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`API test DELETE /:id 1`] = `
+Object {
+  "_id": "5f40da5f1fc695c40887b8c1",
+  "createdAt": 2020-08-22T09:23:57.318Z,
+  "updatedAt": 2020-08-22T09:23:57.318Z,
+}
+`;
+
+exports[`API test GET /list 1`] = `
+"{
+  \\"data\\": [
+    {
+      \\"createdAt\\": \\"2020-08-22T08:47:38.094Z\\",
+      \\"updatedAt\\": \\"2020-08-22T08:47:03.693Z\\",
+      \\"_id\\": \\"507f191e810c19729de860ea\\",
+      \\"name\\": \\"Macbook Pro 2020\\",
+      \\"price\\": 20000,
+      \\"brand\\": \\"Apple\\",
+      \\"color\\": \\"grey\\"
+    },
+    {
+      \\"createdAt\\": \\"2020-08-22T08:47:38.094Z\\",
+      \\"updatedAt\\": \\"2020-08-22T08:47:03.693Z\\",
+      \\"_id\\": \\"5f40da4cca1e00c3cd23f1a0\\",
+      \\"name\\": \\"ÁO POLO NAM\\",
+      \\"price\\": 30000,
+      \\"brand\\": \\"OOOP\\",
+      \\"color\\": \\"red\\"
+    },
+    {
+      \\"createdAt\\": \\"2020-08-22T08:47:38.094Z\\",
+      \\"updatedAt\\": \\"2020-08-22T08:47:03.693Z\\",
+      \\"_id\\": \\"5f40da5f1fc695c40887b8c1\\",
+      \\"name\\": \\"Samsung Galaxy New\\",
+      \\"price\\": 1000000,
+      \\"brand\\": \\"Samsung\\",
+      \\"color\\": \\"navy\\"
+    }
+  ],
+  \\"meta\\": {
+    \\"page\\": 0,
+    \\"pageSize\\": 3
+  }
+}"
+`;
+
+exports[`API test PUT /:id 1`] = `
+Object {
+  "_id": "5f40da5f1fc695c40887b8c1",
+  "brand": "Samsung",
+  "color": "navy",
+  "createdAt": 2020-08-22T08:47:38.094Z,
+  "name": "Samsung Galaxy New",
+  "price": 5000000,
+  "updatedAt": 2020-08-22T08:47:03.693Z,
+}
+`;
