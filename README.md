@@ -1,31 +1,20 @@
 # iCommerce
 An online shopping application which sell the products.
-User can search the products they want then add to a shopping cart and proceed to place an order.
-To manage and make the users satisfied, all the users' activities are related to the products such as finding, filtering, viewing detail information will be stored.
 
 ### Technologies
-- [x] **Container Orchestration Engine**: Kubernetes - Docker
-- [x] **The package manager for Kubernetes**: Helm
-- [x] **Service mesh for Kubernetes**: Linkerd
-- [x] **Reverse proxy and load balancer**: Traefik
-- [x] **Monitoring & Observer**: Grafana, Prometheus
-- [x] **Logging**: Fluentd, Elastic Search, Kibana
-- [x] **Message System**: NATS
-- [x] **Database**: MongoDB
-- [x] **Backend**: NodeJS
+- [x] **Container Orchestration Engine**: [Kubernetes](https://kubernetes.io/) - [Docker](https://www.docker.com/)
+- [x] **The package manager for Kubernetes**: [Helm](https://helm.sh/)
+- [x] **Service mesh for Kubernetes**: [Linkerd](https://linkerd.io/)
+- [x] **Reverse proxy and load balancer**: [Traefik](https://containo.us/traefik/)
+- [x] **Monitoring & Metrics**: [Grafana](https://grafana.com/), [Prometheus](https://prometheus.io/)
+- [x] **Logging**: [Fluentd](https://www.fluentd.org/), [Elastic Search](https://www.elastic.co/home), [Kibana](https://www.elastic.co/kibana)
+- [x] **Message System**: [NATS](https://nats.io/)
+- [x] **Caching System**: [Redis](https://redis.io/)
+- [x] **Cert Management**: [Cert-manager](https://cert-manager.io/docs/)
+- [x] **Database**: [MongoDB](https://www.mongodb.com/)
+- [x] **Backend**: [NodeJS](https://nodejs.org/en/)
 
-### Features
-- [x] Auto Horizontal Scaling
-- [x] Auto Load Balancing
-- [x] Router Rules
-- [x] Service Mesh
-- [x] Service Discovery
-- [x] Message Queue
-- [x] Monitoring & Observer
-- [x] Virtualizing Centralized Logging
-- [ ] High Availability
-
-### High level Architecture Diagram
+### High level Architecture
 
 !["Architecture Diagram"](./diagrams/iCommerce-Services.png?inline=true)
 
@@ -40,9 +29,6 @@ To manage and make the users satisfied, all the users' activities are related to
 !["Logging Design"](./diagrams/linkerd.png)
 !["Kibana"](./diagrams/linkerd-Deployment-Grafana.png)
 
-
-### APIs
-TDP
 
 ### Code folder structure
 ```
@@ -94,27 +80,17 @@ TDP
         └── models
 ```
 
-TODO:
-- [x] A high-level solution diagram for the components/infrastructure design if any.
-- [ ] Sequence diagram for a specific workflow.
-- [ ] Entity relationship diagram for the database.
-- [ ] Software development principles, patterns & practices being applied
-- [x] Code folder structure and the libraries / frameworks being used.
-- [ ] All the required steps in order to get the applications run on local computer.
-- [ ] CURL commands to verify the A PIs.
-- [ ] Use dev/prod overwrite services charts
-
 ### Build and Deploy
 
 **Prerequisites**
 1. [Install Docker](https://www.docker.com/get-started)
-2. [Install K3D - Minimal Kubernetes distribution ](https://k3d.io/#installation)
-3. [Install Helm v3](https://helm.sh/docs/intro/install/)
-4. [Install Linkerd v2](https://linkerd.io/2/getting-started/) ( from step 0 - step 3 )
+2. [Install Helm v3](https://helm.sh/docs/intro/install/)
 
 **Run the application**
 - Dev mode: `./build/dev/scripts/start.sh`
 - Production mode: `./build/production/scripts/start.sh`
+
+**NOTICE**: **You should modify some values in `custom-values.yaml` corresponding to particular services and specific environment**
 
 **For Dev Mode**
 Please copy some visual hosts to `/etc/hosts`
@@ -146,4 +122,26 @@ kubectl port-forward --namespace elastic svc/elasticsearch-kibana 5601:5601 &
     curl http://127.0.0.1:9200/
 ```
 
-all customers' activities such as searching, filtering and viewing product's details need to be stored in the database.
+
+### APIs
+TDP
+
+### Todo
+- [ ] Vault: Key Management
+- [ ] Cert-manager
+- [ ] Redis Caching
+- [ ] GitOps - CI/CD
+- [ ] SonarQube in CI/CD
+- [ ] Storage Operators
+- [ ] High Availability
+
+
+TODO:
+- [x] A high-level solution diagram for the components/infrastructure design if any.
+- [ ] Sequence diagram for a specific workflow.
+- [ ] Entity relationship diagram for the database.
+- [ ] Software development principles, patterns & practices being applied
+- [x] Code folder structure and the libraries / frameworks being used.
+- [ ] All the required steps in order to get the applications run on local computer.
+- [ ] CURL commands to verify the A PIs.
+- [ ] Use dev/prod overwrite services charts
