@@ -144,8 +144,10 @@ describe('API test', () => {
       createdAt: new Date('2020-08-22T09:23:57.318Z'),
     };
     mockingoose(ActivityModel).toReturn(output, 'findOneAndUpdate');
-    ActivityModel
-      .findOneAndUpdate({ _id: '5f40f42cf4450c2d61d4aa18' }, { port: '2345' })
+    ActivityModel.findOneAndUpdate(
+      { _id: '5f40f42cf4450c2d61d4aa18' },
+      { port: '2345' }
+    )
       .exec()
       .then((doc) => {
         expect(doc).toMatchSnapshot();
@@ -158,8 +160,7 @@ describe('API test', () => {
       createdAt: new Date('2020-08-22T09:23:57.318Z'),
     };
     mockingoose(ActivityModel).toReturn(output, 'deleteOne');
-    ActivityModel
-      .deleteOne({ _id: '5f40da5f1fc695c40887b8c1' })
+    ActivityModel.deleteOne({ _id: '5f40da5f1fc695c40887b8c1' })
       .exec()
       .then((doc) => {
         expect(doc).toMatchSnapshot();
