@@ -27,7 +27,7 @@ An online shopping application which sell the products.
 - Cluster Auto-Scaling
 
 ### Sequence Diagram ( UML )
-!["Get-product-UML.png"](./diagrams/Get-product-UML.png)
+!["Get-product-UML.png"](./diagrams/Get-product-UML_.png)
 
 ### Database Design
 !["ERP"](./diagrams/ERD.png)
