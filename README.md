@@ -21,6 +21,11 @@ An online shopping application which sell the products.
 - `/build/base/scripts/install-deps.sh`
 - `/build/base/scripts/install-services.sh`
 
+**Since we use Kubernetes, the system can scale as**:
+- Vertical Scaling of Kubernetes Nodes
+- Horizontal Pod Autoscaling
+- Cluster Auto-Scaling
+
 ### Sequence Diagram ( UML )
 !["Get-product-UML.png"](./diagrams/Get-product-UML.png)
 
