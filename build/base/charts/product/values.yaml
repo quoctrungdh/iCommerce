@@ -3,5 +3,5 @@ projectName: i-commerce
 imagePullPolicy: Always
 restartPolicy: Always
 replicaCount: 1
-serviceRoute: Host(`local.api.i-commerce.example`) && PathPrefix(`/product`)
+serviceRoute: Host(`local.api.i-commerce.example`) && PathPrefix(`/products`)
 domain: local.api.i-commerce.example

@@ -1,0 +1,3 @@
+serviceRoute: "Host(`api.i-commerce.production`) && PathPrefix(`/products`)"
+serviceName: product
+image: your-registry/product:latest

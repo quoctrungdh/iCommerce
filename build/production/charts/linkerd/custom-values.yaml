@@ -1,0 +1,3 @@
+serviceRoute: "Host(`linkerd.i-commerce.production`)"
+serviceName: linker-dashboard-ingress
+projectName: i-commerce

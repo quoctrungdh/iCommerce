@@ -64,8 +64,8 @@ export const createOrder = async (ctx: Koa.Context) => {
   }
 
   const order = {
-    totalPrice: result.price * data.quality,
-    quality: data.quality,
+    totalPrice: result.price * data.quantity,
+    quantity: data.quantity,
     productID: result._id,
   };
 

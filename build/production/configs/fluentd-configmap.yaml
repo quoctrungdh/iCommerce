@@ -52,6 +52,14 @@ data:
       @type stdout
     </match>
 
+
+    <filter **>
+      @type stdout
+      <exclude>
+        pattern /^\s*$/
+      </exclude>
+    </filter>
+
     # Send the logs to the standard output
     <match **>
       @type elasticsearch

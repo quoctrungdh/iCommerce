@@ -1,2 +1,3 @@
-serviceRoute: "Host(`api.i-commerce.com`) && PathPrefix(`/order`)"
+serviceRoute: "Host(`api.i-commerce.production`) && PathPrefix(`/orders`)"
 serviceName: order
+image: your-registry/order:latest

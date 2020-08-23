@@ -52,11 +52,20 @@ helm upgrade --install linkerd \
 helm upgrade --install linkerd-dashboard-ingress -n linkerd ./build/base/charts/linkerd -f ./build/${ENV}/charts/linkerd/custom-values.yaml
 kubectl rollout status deploy/linkerd-web -n linkerd
 
+_out 👉 Installing Redis
+kubectl create namespace redis
+helm install redis bitnami/redis -f ./build/base/charts/redis/custom-values.yaml -f ./build/${ENV}/charts/redis/custom-values.yaml -n redis
+kubectl rollout status svc/redis -n redis
+
+_out 👉 Installing Cert-Manager
+helm repo add jetstack https://charts.jetstack.io
+kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.0-beta.0/cert-manager.crds.yaml
+helm install --name cert-manager --namespace cert-manager jetstack/cert-manager -f ./build/base/charts/cert-manager/custom-values.yaml -f ./build/${ENV}/charts/cert-manager/custom-values.yaml
+kubectl rollout status svc/cert-manager -n cert-manager
+
 _out 👉 Installing NATS
 kubectl create namespace nats
-# helm repo add nats https://nats-io.github.io/k8s/helm/charts/
-helm install icommerce-nats bitnami/nats-f ./build/base/charts/nats/custom-values.yaml -f ./build/${ENV}/charts/nats/custom-values.yaml -n nats
-# helm install icommerce-nats nats/nats -f ./build/base/charts/nats/custom-values.yaml -f ./build/${ENV}/charts/nats/custom-values.yaml -n nats
+helm install icommerce-nats bitnami/nats -f ./build/base/charts/nats/custom-values.yaml -f ./build/${ENV}/charts/nats/custom-values.yaml -n nats
 kubectl rollout status svc/icommerce-nats -n nats
 
 _out 👉 Installing MongoDB
