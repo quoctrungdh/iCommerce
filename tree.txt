@@ -4,6 +4,7 @@
 │   │   ├── charts
 │   │   │   ├── activity
 │   │   │   │   └── templates
+│   │   │   ├── cert-manager
 │   │   │   ├── elasticsearch
 │   │   │   ├── fluentd
 │   │   │   ├── kibana
@@ -19,6 +20,7 @@
 │   │   │   ├── product
 │   │   │   │   ├── charts
 │   │   │   │   └── templates
+│   │   │   ├── redis
 │   │   │   └── traefik
 │   │   │       ├── charts
 │   │   │       └── templates
@@ -26,26 +28,34 @@
 │   ├── dev
 │   │   ├── charts
 │   │   │   ├── activity
+│   │   │   ├── cert-manager
 │   │   │   ├── elasticsearch
 │   │   │   ├── fluentd
 │   │   │   ├── kibana
 │   │   │   ├── linkerd
+│   │   │   │   └── certs
 │   │   │   ├── mongodb
 │   │   │   ├── nats
 │   │   │   ├── order
 │   │   │   ├── product
+│   │   │   ├── redis
 │   │   │   └── traefik
 │   │   ├── configs
 │   │   └── scripts
 │   └── production
 │       ├── charts
 │       │   ├── activity
+│       │   ├── cert-manager
 │       │   ├── elasticsearch
 │       │   ├── fluentd
+│       │   ├── kibana
+│       │   ├── linkerd
+│       │   │   └── certs
 │       │   ├── mongodb
 │       │   ├── nats
 │       │   ├── order
 │       │   ├── product
+│       │   ├── redis
 │       │   └── traefik
 │       ├── configs
 │       └── scripts
@@ -53,21 +63,36 @@
 └── services
     ├── activity
     │   ├── build
-    │   ├── controllers
-    │   ├── helpers
-    │   ├── middlewares
-    │   └── models
+    │   └── src
+    │       ├── __test__
+    │       │   └── __snapshots__
+    │       ├── controllers
+    │       ├── events
+    │       │   └── subscription
+    │       ├── helpers
+    │       ├── middlewares
+    │       └── models
     ├── order
     │   ├── build
-    │   ├── controllers
-    │   ├── helpers
-    │   ├── middlewares
-    │   └── models
+    │   └── src
+    │       ├── __test__
+    │       │   └── __snapshots__
+    │       ├── controllers
+    │       ├── events
+    │       │   └── publisher
+    │       ├── helpers
+    │       ├── middlewares
+    │       └── models
     └── product
         ├── build
-        ├── controllers
-        ├── helpers
-        ├── middlewares
-        └── models
+        └── src
+            ├── __test__
+            │   └── __snapshots__
+            ├── controllers
+            ├── events
+            │   └── publisher
+            ├── helpers
+            ├── middlewares
+            └── models
 
-70 directories
+95 directories

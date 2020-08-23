@@ -89,6 +89,7 @@ Centralized logging is key to a shorter mean time to resolution (MTTR) and speed
 │   ├── base                     // base configurations
 │   │   ├── charts               // Helm charts template
 │   │   │   ├── activity         // Helm chart for Activity service
+│   │   │   ├── cert-manager     // Helm chart for Cert Manager service
 │   │   │   ├── elasticsearch    // Helm chart for Elasticsearch service
 │   │   │   ├── fluentd          // Helm chart for Fluentd service
 │   │   │   ├── linkerd          // Helm chart for Linkerd service
@@ -96,6 +97,7 @@ Centralized logging is key to a shorter mean time to resolution (MTTR) and speed
 │   │   │   ├── nats             // Helm chart for Nats service
 │   │   │   ├── order            // Helm chart for Order service
 │   │   │   ├── product          // Helm chart for Product service
+│   │   │   ├── redis            // Helm chart for Redis service
 │   │   │   └── traefik          // Helm chart for Traefik service
 │   │   └── scripts
 │   ├── dev
@@ -116,21 +118,36 @@ Centralized logging is key to a shorter mean time to resolution (MTTR) and speed
 │       └── scripts             // scripts for production environment
 ├── diagrams
 └── services
-    ├── activity                // activity's source codes
-    │   ├── controllers
-    │   ├── helpers
-    │   ├── middlewares
-    │   └── models
-    ├── order                   // order's source codes
-    │   ├── controllers
-    │   ├── helpers
-    │   ├── middlewares
-    │   └── models
-    └── product                 // product's source codes
-        ├── controllers
-        ├── helpers
-        ├── middlewares
-        └── models
+    ├── activity                // Activity service code
+    │   ├── build
+    │   └── src
+    │       ├── __test__
+    │       ├── controllers
+    │       ├── events
+    │       │   └── subscription
+    │       ├── helpers
+    │       ├── middlewares
+    │       └── models
+    ├── order                   // Order service code
+    │   ├── build
+    │   └── src
+    │       ├── __test__
+    │       ├── controllers
+    │       ├── events
+    │       │   └── publisher
+    │       ├── helpers
+    │       ├── middlewares
+    │       └── models
+    └── product                 // Product service code
+        ├── build
+        └── src
+            ├── __test__
+            ├── controllers
+            ├── events
+            │   └── publisher
+            ├── helpers
+            ├── middlewares
+            └── models
 ```
 
 ### Build and Deploy
