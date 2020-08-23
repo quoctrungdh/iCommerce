@@ -46,7 +46,7 @@ An online shopping application which sell the products.
 - Therefore, it can be scaled, independence, and autonomy
 
 
-###Logging System
+### Logging System
 !["Logging Design"](./diagrams/efk-diagram.png)
 !["Kibana"](./diagrams/Discover-Elastic.png)
 
@@ -60,7 +60,7 @@ An online shopping application which sell the products.
 Centralized logging is key to a shorter mean time to resolution (MTTR) and speedy Root Cause Analysis (RCA). Whilst logging and monitoring are usually considered to be separate topics in their own right, log event-based alerts provide a good combination.
 
 **Next steps?**
-- Transferring **Activity's service** to Elastic Search then Marketing ( for instance ) can search, virtualize and analytic them.
+- Transferring **Activity's service** to Elastic Search then Marketing team ( for instance ) can search, virtualize and analytic them.
 
 
 ### Service mesh & Monitoring
@@ -170,7 +170,7 @@ Please copy some visual hosts to `/etc/hosts`
 127.0.0.1   traefik.i-commerce.example
 127.0.0.1   linkerd.i-commerce.example
 ```
-**Access/API links for DEV Mode**:
+Access/API links:
 - Product API: http://api.i-commerce.example/products
 - Activity API: http://api.i-commerce.example/activities
 - Order API: http://api.i-commerce.example/orders
@@ -178,11 +178,10 @@ Please copy some visual hosts to `/etc/hosts`
 - Traefik Dashboard: http://traefik.i-commerce.example
 - Linkerd Dashboard: http://linkerd.i-commerce.example
 
-==========================================
+**Environment for a specific service in /services directory**: 
+You should rename `.env.example` to `.env` and modify all environment variables to match to your service before running `npm run dev` or `yarn dev`
 
-**👉 IMPORTANT: You can use [POSTMAN](https://www.postman.com/downloads/) to call your API**
-
-### APIs
+### Try out APIs
 **Product API**
 - Create Product
 ```shell
